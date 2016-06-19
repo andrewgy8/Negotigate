@@ -1,20 +1,21 @@
 require "NegotiGate/version"
 
 module NegotiGate
+  
   class Negotiation
-    
-    =begin
-    def initialize(posted_selling_price, buyers_highest_price, sellers_lowest_price)
-      @posted_selling_price = posted_selling_price
-      @buyers_highest_price = buyers_highest_price
-      @sellers_lowest_price = sellers_lowest_price
-    end=end
-
-    
-    def both_prices_equal?
-      if 
+  
+    def initialize(sellers_original_price, buyers_original_offer)
+      @sellers_original_price = sellers_original_price
+      @buyers_original_offer = buyers_original_offer
     end
-    
-    
+
+    def both_prices_equal?
+      if @sellers_original_price == @buyers_original_offer
+        true
+      else
+        false
+      end
+    end
+
   end
 end
