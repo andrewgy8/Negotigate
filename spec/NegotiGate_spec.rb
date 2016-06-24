@@ -15,22 +15,15 @@ describe NegotiGate::Negotiation do
     end
 
     context "given the sellers lowest price and the buyers highest price are different" do
-      let(:negotiation) { described_class.new(10, 5) }
+      let(:negotiation) { described_class.new(5, 10) }
 
       it 'returns false' do
         expect(negotiation.both_prices_equal?).to be false
       end
-    end
-  end
-  describe ".negotiate?" do
-    let(:negotiation) { described_class.new(10, 10)}
-    
-    context "given the seller and buyer would both like to negotiate" do
-      it 'returns true when yes' do
-        user1 = class_double("User")
-        
-        expect(negotiation.negotiate?).to be true
+
+      it 'computes the median price of the two walkway offers' do
+        expect(negotiation.median_price_find).to eq(7.5)
       end
-    end 
+    end
   end
 end

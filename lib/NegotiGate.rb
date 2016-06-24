@@ -1,49 +1,67 @@
 require "NegotiGate/version"
 
 module NegotiGate
-  
+  attr_accessor :sellers_walkaway_price, :buyers_walkaway_price
   class Negotiation
   
     def initialize(sellers_walkaway_price, buyers_walkaway_price)
-      @sellers_walkaway_price = sellers_walkaway_price.int
-      @buyers_walkaway_offer = buyers_walkaway_offer.int
+      @sellers_walkaway_price = sellers_walkaway_price
+      @buyers_walkaway_price = buyers_walkaway_price
     end
 
     # if the prices are equal, then the deal is finished
     def both_prices_equal?
-      @sellers_walkaway_price == @buyers_walkaway_offer
+      @sellers_walkaway_price == @buyers_walkaway_price
     end
 
     #compares the two offers two each other
     def median_price_find
-      if @sellers_walkaway_price < @buyers_walkaway_offer
-        compromise_price = (@sellers_walkaway_price + @buyers_walkaway_offer) / 2
-
-      elsif @sellers_walkaway_price > @buyers_walkaway_offer
+      if @sellers_walkaway_price < @buyers_walkaway_price
+        compromise_price = ((@sellers_walkaway_price + @buyers_walkaway_price) / 2.0).to_f
+      elsif @sellers_walkaway_price > @buyers_walkaway_price
         puts "Sorry, your offers need to be adjusted to find compromise."
-      
       else
         puts "Sorry, could not compute."
       end
-      
+
     end
 
   end
 
-  
-  def negotiate_answer_buyer
-    puts "What is your walk away price (ie. the highest price you are willing to go)?"
-    negotiate_answer = gets.chomp
+  class User
+    attr_accessor :position, :name
+    def initialize(name, position)
+      @name = name
+      @position = position
+    end
+
+    def introduction
+      puts "Hello #{@name}! We are going to try to conduct a peace full negotiation by using this program."
+    end
+
+    def negotiation_start
+      if @position == "seller"
+        negotiate_answer_seller
+      elsif @position == "buyer"
+        negotiate_answer_buyer
+      end  
+    end
+
+    def negotiate_answer_buyer
+      puts "#{@name}, what is your walk away price (ie. the highest price you are willing to go)?"
+      STDIN.gets.chomp.to_i
+    end
+
+    def negotiate_answer_seller
+      puts "What is your walk away price (ie. the lowest price you are willing to go)?"
+      STDIN.gets.chomp.to_i
+    end
   end
 
-  def negotiate_answer_seller
-    puts "What is your walk away price (ie. the lowest price you are willing to go)?"
-    negotiate_answer = gets.chomp
-  end
+  user1 = User.new("Andrew", "seller")
+  user2 = User.new("Eva", "buyer")
 
-  user1 = negotiate_answer_seller
-  user2 = negotiate_answer_buyer
-  
+
 end
 
 
