@@ -4,34 +4,30 @@ module NegotiGate
   
   class Negotiation
   
-    def initialize(sellers_original_price, buyers_original_offer)
-      @sellers_original_price = sellers_original_price
-      @buyers_original_offer = buyers_original_offer
+    def initialize(sellers_walkaway_price, buyers_walkaway_price)
+      @sellers_walkaway_price = sellers_walkaway_price.int
+      @buyers_walkaway_offer = buyers_walkaway_offer.int
     end
 
     # if the prices are equal, then the deal is finished
     def both_prices_equal?
-      @sellers_original_price == @buyers_original_offer
-    end
-
-    #if 'yes', then on to the negotiation engine
-    def negotiate?
-      if negotiate_answer == 'yes'
-        true
-      end
+      @sellers_walkaway_price == @buyers_walkaway_offer
     end
 
     #compares the two offers two each other
-    def compare_the_offers
-      if @sellers_original_price < @buyers_original_offer
+    def median_price_find
+      if @sellers_walkaway_price < @buyers_walkaway_offer
+        compromise_price = (@sellers_walkaway_price + @buyers_walkaway_offer) / 2
 
-      elsif @sellers_original_price > @buyers_original_offer
-
+      elsif @sellers_walkaway_price > @buyers_walkaway_offer
+        puts "Sorry, your offers need to be adjusted to find compromise."
+      
       else
-
+        puts "Sorry, could not compute."
       end
-    
+      
     end
+
   end
 
   
