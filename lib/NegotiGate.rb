@@ -2,6 +2,7 @@ require "NegotiGate/version"
 
 module NegotiGate
   attr_accessor :sellers_walkaway_price, :buyers_walkaway_price
+  
   class Negotiation
   
     def initialize(sellers_walkaway_price, buyers_walkaway_price)
@@ -23,13 +24,13 @@ module NegotiGate
       else
         puts "Sorry, could not compute."
       end
-
     end
 
   end
 
   class User
     attr_accessor :position, :name
+    
     def initialize(name, position)
       @name = name
       @position = position
@@ -47,6 +48,8 @@ module NegotiGate
       end  
     end
 
+    protected
+
     def negotiate_answer_buyer
       puts "#{@name}, what is your walk away price (ie. the highest price you are willing to go)?"
       STDIN.gets.chomp.to_i
@@ -60,7 +63,6 @@ module NegotiGate
 
   user1 = User.new("Andrew", "seller")
   user2 = User.new("Eva", "buyer")
-
 
 end
 
