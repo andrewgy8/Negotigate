@@ -34,20 +34,20 @@ module NegotiGate
     end
   end
 
-  class User
-    attr_accessor :negotiate_answer, :user_name
-
-    def initialize(user_name)
-      @user_name = user_name
-    end
-
-    def negotiate_answer
-      @negotiate_answer = gets.chomp.downcase
-      if @negotiate_answer == 'yes'
-        true
-      end
-    end
+  
+  def negotiate_answer_buyer
+    puts "What is your walk away price (ie. the highest price you are willing to go)?"
+    negotiate_answer = gets.chomp
   end
+
+  def negotiate_answer_seller
+    puts "What is your walk away price (ie. the lowest price you are willing to go)?"
+    negotiate_answer = gets.chomp
+  end
+
+  user1 = negotiate_answer_seller
+  user2 = negotiate_answer_buyer
+  
 end
 
 

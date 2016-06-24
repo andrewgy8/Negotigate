@@ -28,7 +28,7 @@ describe NegotiGate::Negotiation do
     context "given the seller and buyer would both like to negotiate" do
       it 'returns true when yes' do
         user1 = class_double("User")
-        user1.to receive(:answer).with('yes').and_return(:true)
+        
         expect(negotiation.negotiate?).to be true
       end
     end 
