@@ -33,6 +33,9 @@ describe NegotiGate::Negotiation do
         expect{ negotiation.median_price_find }.to raise_error(ArgumentError)
       end
 
+      it "redirects to a new round of negotiation" do
+        allow(negotiation).to receive(:readjust_walkaway_prices).and_return("I am readjusting")
+      end
     end
   end
 end

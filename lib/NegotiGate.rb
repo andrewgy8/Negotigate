@@ -1,10 +1,10 @@
 require "NegotiGate/version"
 
 module NegotiGate
-  attr_accessor :sellers_walkaway_price, :buyers_walkaway_price
   
   class Negotiation
-  
+    attr_accessor :sellers_walkaway_price, :buyers_walkaway_price
+
     def initialize(sellers_walkaway_price, buyers_walkaway_price)
       @sellers_walkaway_price = sellers_walkaway_price
       @buyers_walkaway_price = buyers_walkaway_price
@@ -20,13 +20,17 @@ module NegotiGate
       if @sellers_walkaway_price < @buyers_walkaway_price
         compromise_price = ((@sellers_walkaway_price + @buyers_walkaway_price) / 2.0).to_f
       elsif @sellers_walkaway_price > @buyers_walkaway_price
-        
         raise ArgumentError.new("Sorry, both offers need to be adjusted to find compromise.") 
+        readjust_walkaway_prices
       else
         puts "Sorry, could not compute. Please try again."
       end
     end
 
+    #allows new instance of established user class to have readjusted variables
+    def readjust_walkaway_prices
+      return "I am readjusting"
+    end
   end
 
   class User
