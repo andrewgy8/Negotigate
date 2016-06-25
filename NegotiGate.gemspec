@@ -6,11 +6,12 @@ require 'NegotiGate/version'
 Gem::Specification.new do |spec|
   spec.name          = "NegotiGate"
   spec.version       = NegotiGate::VERSION
-  spec.authors       = ["andrewgy8"]
+  spec.authors       = ["Andrew Graham-Yooll"]
   spec.email         = ["andrewgy8@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Designed to facilitate compromise, consensus and fruitful negotiations between two individuals}
+  spec.description   = %q{Takes two integer inputs and determines the ideal compromise for the items/article/whatever it is you are negotiating. 
+    The application is designed to give valuable and informative output so to generate a more conducive discussion as well.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 

@@ -15,14 +15,14 @@ module NegotiGate
       @sellers_walkaway_price == @buyers_walkaway_price
     end
 
-    #compares the two offers two each other
+    #compares the two offers to each other
     def median_price_find
       if @sellers_walkaway_price < @buyers_walkaway_price
         compromise_price = ((@sellers_walkaway_price + @buyers_walkaway_price) / 2.0).to_f
       elsif @sellers_walkaway_price > @buyers_walkaway_price
-        puts "Sorry, your offers need to be adjusted to find compromise."
+        raise ArgumentError.new("Sorry, both offers need to be adjusted to find compromise.") 
       else
-        puts "Sorry, could not compute."
+        puts "Sorry, could not compute. Please try again."
       end
     end
 

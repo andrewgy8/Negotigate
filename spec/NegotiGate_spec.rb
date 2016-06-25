@@ -25,5 +25,13 @@ describe NegotiGate::Negotiation do
         expect(negotiation.median_price_find).to eq(7.5)
       end
     end
+
+    context "given that there is no Zone of Possible Agreement" do
+      let(:negotiation) { described_class.new(10, 5) }
+
+      it "raises an error" do
+        expect(negotiation.median_price_find).to raise_error(ArgumentError)
+      end
+    end
   end
 end
