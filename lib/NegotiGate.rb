@@ -20,6 +20,7 @@ module NegotiGate
       if @sellers_walkaway_price < @buyers_walkaway_price
         compromise_price = ((@sellers_walkaway_price + @buyers_walkaway_price) / 2.0).to_f
       elsif @sellers_walkaway_price > @buyers_walkaway_price
+        
         raise ArgumentError.new("Sorry, both offers need to be adjusted to find compromise.") 
       else
         puts "Sorry, could not compute. Please try again."

@@ -21,7 +21,7 @@ describe NegotiGate::Negotiation do
         expect(negotiation.both_prices_equal?).to be false
       end
 
-      it 'computes the median price of the two walkway offers' do
+      it 'computes the median price of the two walkway offers for a Zone of possible Agreement' do
         expect(negotiation.median_price_find).to eq(7.5)
       end
     end
@@ -30,8 +30,9 @@ describe NegotiGate::Negotiation do
       let(:negotiation) { described_class.new(10, 5) }
 
       it "raises an error" do
-        expect(negotiation.median_price_find).to raise_error(ArgumentError)
+        expect{ negotiation.median_price_find }.to raise_error(ArgumentError)
       end
+
     end
   end
 end
