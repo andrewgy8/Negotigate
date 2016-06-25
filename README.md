@@ -22,7 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Install MySQL locally using homebrew:
+	
+	$ brew install mysql
+
 
 ## Development
 
