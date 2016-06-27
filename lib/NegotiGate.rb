@@ -66,8 +66,61 @@ module NegotiGate
     end
   end
 
+
   user1 = User.new("Andrew", "seller")
   user2 = User.new("Eva", "buyer")
+
+
+=begin
+
+  class Database
+    def create_database
+      CREATE TABLE `users` (
+        `id` int PRIMARY KEY,
+        `f_name` varchar(255),
+        `l_name` varchar(255),
+        `email` varchar(255),
+        `phone` int,
+        `pword_hash` varchar(255),
+        `role` varchar(255),
+        `created` datetime,
+        `updated` datetime,
+        `enabled` bool
+      );
+      CREATE TABLE `postings` (
+        `id` int PRIMARY KEY,
+        `title` varchar(255),
+        `description` varchar(255),
+        `selling_user` int,
+        `list_price` int,
+        `url` varchar(255),
+        `created` datetime,
+        `updated` datetime,
+        `enabled` bool,
+        FOREIGN KEY(`selling_user`) REFERENCES `users` (`id`)
+      );
+      CREATE TABLE `offers` (
+        `id` int PRIMARY KEY,
+        `posting_id` int,
+        `sellers_lowest` varchar(255),
+        `buyer_id` int,
+        `buyers_highest` int,
+        `buyer_state` varchar(255),
+        `seller_state` varchar(255),
+        `resolved` bool,
+        `created` datetime,
+        `updated` datetime,
+        `enabled` bool,
+        FOREIGN KEY(`posting_id`) REFERENCES `postings` (`id`),
+        FOREIGN KEY(`buyer_id`) REFERENCES `users` (`id`)
+      );  
+    end
+  end
+
+  db = Database.new
+  negotiation_table = MySQL.new('andrew', '', '', 'negotiation_table')
+  negotiation_db = negotiation_table.create_db('negotiation')
+  =end
 
 end
 
